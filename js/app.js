@@ -1306,14 +1306,6 @@ function procesarImagen(datos) {
 }
 
 
-// JavaScript para habilitar la selección de múltiples opciones con un solo clic
-document.getElementById("mespago").addEventListener("click", function(event) {
-    var target = event.target;
-    if (target.tagName === "OPTION") {
-        target.selected = !target.selected;
-    }
-});
-  
 function removeSpecialCharacters(input) {
   // Reemplaza caracteres especiales y acentos con una expresión regular
   input.value = input.value.replace(/[^A-Za-z\s]/g, '');
@@ -1769,3 +1761,18 @@ function eliminarRegistro(domcodificado){
 function validarNumero(input) {
     input.value = input.value.replace(/\D/g, ''); // Eliminar caracteres que no sean dígitos
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    var selectElement = document.getElementById('mespago');
+    var options = selectElement.options;
+
+    selectElement.addEventListener('mousedown', function (event) {
+        event.preventDefault(); // Evita la selección automática de texto
+        var target = event.target;
+
+        if (target.tagName === 'OPTION') {
+            var isSelected = target.selected;
+            target.selected = !isSelected;
+        }
+    });
+});

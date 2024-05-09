@@ -1762,3 +1762,12 @@ function validarNumero(input) {
     input.value = input.value.replace(/\D/g, ''); // Eliminar caracteres que no sean dígitos
 }
 
+function onClick(e) {
+    e.preventDefault();
+    grecaptcha.enterprise.ready(async () => {
+      const token = await grecaptcha.enterprise.execute('6LcLXtYpAAAAAGb-FTuihdumnp4HmqdLVjwH-Qds', {action: 'LOGIN'});
+    });
+}
+
+
+
